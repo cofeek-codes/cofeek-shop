@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Role;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -21,14 +22,12 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-
-            // relations
-            $table->unsignedBigInteger('role_id')->nullable();
-            $table->foreign('role_id')->references('id')->on('roles')->onDelete('cascade');
-            // $table->string('cart');
-
             $table->rememberToken();
             $table->timestamps();
+
+            // relations
+
+            $table->foreignIdFor(Role::class)->constrained();
         });
     }
 
@@ -37,8 +36,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        $table->dropForeign(['role_id']);
-        $table->dropColumn('role_id');
         Schema::dropIfExists('users');
     }
 };
