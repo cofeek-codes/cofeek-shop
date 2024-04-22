@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -15,6 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $user = User::find(1);
-    return view('welcome', ['user' => $user]);
+    return view('home');
+});
+
+// auth
+
+Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(function () {
 });
