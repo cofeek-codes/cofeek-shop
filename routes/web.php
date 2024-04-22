@@ -17,9 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('home');
 
 // auth
 
 Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(function () {
+    // login
+    Route::get('/login', 'loginform')->name('loginform');
+    Route::post('/login', 'login')->name('login');
+    // register
+    Route::get('/register', 'registerform')->name('registerform');
+    Route::post('/register', 'register')->name('register');
 });

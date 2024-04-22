@@ -7,8 +7,8 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
         @include('components.style')
     </head>
-    <body class="d-flex flex-column min-vh-100">
-        @include('components.header')
+    <body class="px-5">
+        @include('components.header')'
         @yield('content')
     </body>
 </html>
