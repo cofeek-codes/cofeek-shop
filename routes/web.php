@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('home');
+    return redirect()->route('products.all');
 })->name('home');
 
 // auth
@@ -28,4 +29,19 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
     // register
     Route::get('/register', 'registerform')->name('registerform');
     Route::post('/register', 'register')->name('register');
+
+    // logout
+    Route::get('/logout', 'logout')->name('logout');
+});
+
+// products (catalog)
+
+Route::controller(ProductController::class)->prefix('products')->name('products.')->group(function () {
+    Route::get('/all', 'all')->name('all');
+});
+
+
+// cart
+Route::controller(CartController::class)->middleware('auth')->prefix('cart')->name('cart.')->group(function () {
+    Route::get('/to/{id}', 'add')->name('add');
 });

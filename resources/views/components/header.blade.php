@@ -21,7 +21,9 @@
                 <h3>
                     {{auth()->user()->name}} {{auth()->user()->surname}}
                 </h3>
-
+                <a href="{{route('auth.logout')}}">
+                <button type="button" class="btn btn-primary">Logout</button>
+                </a>
             @endif
         </div>
     </header>
