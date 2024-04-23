@@ -22,7 +22,12 @@
                     {{auth()->user()->name}} {{auth()->user()->surname}}
                 </h3>
                 <a href="{{route('auth.logout')}}">
-                <button type="button" class="btn btn-primary">Logout</button>
+                    <button type="button" class="btn btn-primary">Logout</button>
+                    @if(auth()->user()->role_id == 2)
+                        <a href="{{route('/admin')}}">
+                    <button type="button" class="btn btn-primary">Admin</button>
+                        </a>
+                    @endif
                 </a>
             @endif
         </div>

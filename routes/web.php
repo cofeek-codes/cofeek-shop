@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProductController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -42,6 +43,13 @@ Route::controller(ProductController::class)->prefix('products')->name('products.
     // delete and update products
     Route::get('/delete/{id}', 'delete')->middleware('admin');
     Route::get('/update/{id}', 'update')->middleware('admin');
+});
+
+// admin
+
+
+Route::controller(AdminController::class)->prefix('admin')->middleware('admin')->name('admin.')->group(function () {
+    Route::get('main', 'main');
 });
 
 
