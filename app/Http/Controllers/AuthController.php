@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -32,6 +33,25 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-        return dd($request);
+        $requestData = $request->all();
+        $validatedRequestData = $request->validate([
+            'rules' => 'required',
+            'name' => 'required',
+            'surname' => 'required',
+            'email' => 'required|email',
+            'login' => 'required',
+            'password' => 'required',
+
+        ]);
+
+        $validatedRequestData['role_id'] = 1;
+        $validatedRequestData['password'] = bcrypt($validatedRequestData['password']);
+
+
+        $newUser = User::create($validatedRequestData);
+
+        Auth::loginUsingId($newUser->id);
+
+        return redirect('/');
     }
 }
