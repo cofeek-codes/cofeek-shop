@@ -38,7 +38,12 @@ Route::controller(AuthController::class)->prefix('auth')->name('auth.')->group(f
 
 Route::controller(ProductController::class)->prefix('products')->name('products.')->group(function () {
     Route::get('/all', 'all')->name('all');
+    // admin panel actions
+    // delete and update products
+    Route::get('/delete/{id}', 'delete')->middleware('admin');
+    Route::get('/update/{id}', 'update')->middleware('admin');
 });
+
 
 
 // cart

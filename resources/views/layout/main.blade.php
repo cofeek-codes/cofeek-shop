@@ -8,7 +8,7 @@
         @include('components.style')
     </head>
     <body class="px-5">
-        @include('components.header')'
+        @include('components.header')
         @yield('content')
     </body>
 </html>
