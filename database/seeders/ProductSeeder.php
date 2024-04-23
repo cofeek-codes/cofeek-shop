@@ -18,7 +18,7 @@ class ProductSeeder extends Seeder
                 'title' => fake()->word(),
                 'price' => fake()->randomNumber(4, true),
                 'manufacturer' => fake()->country(),
-                'photo' => 'printer' . $i . '.png',
+                'photo' => 'printer' . rand(1, 5) . '.png',
                 'releaseYear' => fake()->year(),
                 'model' => fake()->words(3, true),
                 'category_id' => rand(1, 3)

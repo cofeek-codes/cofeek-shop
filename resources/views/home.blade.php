@@ -22,11 +22,11 @@
             @foreach($products as $product)
                 <div class="col-md-4">
                     <div class="card mb-4 box-shadow">
-                        <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="" data-holder-rendered="true">
+                        <img class="card-img-top"  style="height: 225px; width: 100%; display: block;" src="{{asset('uploads/' . $product->photo)}}" data-holder-rendered="true">
                         <div class="card-body">
                             <h3 class="card-title">{{$product->title}}</h3>
                             <p class="card-text">{{$product->manufacturer}} {{$product->model}}</p>
-                            <p>{{$product->price}}</p>
+                            <p>${{$product->price}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 @if (Auth::check() && auth()->user()->role_id == 2)
                                 <div class="btn-group">
