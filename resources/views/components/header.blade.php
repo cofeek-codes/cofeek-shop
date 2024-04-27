@@ -24,7 +24,7 @@
                 <a href="{{route('auth.logout')}}">
                     <button type="button" class="btn btn-primary">Logout</button>
                     @if(auth()->user()->role_id == 2)
-                        <a href="{{route('/admin')}}">
+                        <a href="{{route('admin.panel')}}">
                     <button type="button" class="btn btn-primary">Admin</button>
                         </a>
                     @endif

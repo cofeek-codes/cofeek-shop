@@ -49,7 +49,7 @@ Route::controller(ProductController::class)->prefix('products')->name('products.
 
 
 Route::controller(AdminController::class)->prefix('admin')->middleware('admin')->name('admin.')->group(function () {
-    Route::get('main', 'main');
+    Route::get('panel', 'showPanel')->name('panel');
 });
 
 
