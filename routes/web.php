@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
@@ -57,4 +58,11 @@ Route::controller(AdminController::class)->prefix('admin')->middleware('admin')-
 // cart
 Route::controller(CartController::class)->middleware('auth')->prefix('cart')->name('cart.')->group(function () {
     Route::get('/to/{id}', 'add')->name('add');
+});
+
+// category
+
+Route::controller(CategoryController::class)->middleware('auth')->prefix('category')->name('category.')->group(function () {
+    Route::post('add', 'add')->name('add')->middleware('admin');
+    Route::get('delete/{id}', 'delete')->name('delete')->middleware('admin');
 });

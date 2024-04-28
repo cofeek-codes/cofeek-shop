@@ -10,6 +10,6 @@ class AdminController extends Controller
     public function showPanel()
     {
         $categories = Category::all();
-        return view('admin.panel');
+        return view('admin.panel', ['categories' => $categories]);
     }
 }

@@ -42,7 +42,12 @@
                                     </a>
                                 </div>
                             @endif
-                            <small class="text-muted">{{$product->category->title}}</small>
+                            @if ($product->category != null)
+                                <small class="text-muted">{{$product->category->title}}</small>
+                            @else
+                                <small class="text-muted">Common</small>
+                            @endif
+
                         </div>
                     </div>
                 </div>

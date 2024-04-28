@@ -24,7 +24,7 @@ return new class extends Migration
 
             // relations
 
-            $table->foreignIdFor(Category::class);
+            $table->foreignIdFor(Category::class)->nullable()->constrained()->onDelete('set null');
         });
     }
 
